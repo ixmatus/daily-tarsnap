@@ -20,7 +20,7 @@ logecho () {
 # Execute the backup
 logecho "--- Executing tarsnap backup"
 
-tarsnap -c -f sytem_backup-`date +\%Y-%m-%d` /Applications /Users/ixmatus /Library >> ${DAILYLOG} 2>&1
+tarsnap -c -f system_backup-`date +\%Y-%m-%d` /Applications /Users/ixmatus /Library >> ${DAILYLOG} 2>&1
 
 logecho "--- tarsnap backup complete"
 
