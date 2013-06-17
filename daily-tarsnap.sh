@@ -17,12 +17,23 @@ logecho () {
     echo "${HOST} $ts: $*" >> ${DAILYLOG}
 }
 
-# Execute the backup
+logecho "--- Dumping list of installations"
+
+port installed > /Users/ixmatus/mac_ports_installed.txt
+ls -al /Applications > /Users/ixmatus/mac_dmgs_installed.txt
+
 logecho "--- Executing tarsnap backup"
 
-tarsnap -c -f system_backup-`date +\%Y-%m-%d` /Applications /Users/ixmatus /Library >> ${DAILYLOG} 2>&1
+# Only backing up my home dir as everything else *should* be
+# configurable from what's in my homedir only
+tarsnap -c -f system_backup-`date +\%Y-%m-%d` /Users/ixmatus >> ${DAILYLOG} 2>&1
 
-logecho "--- tarsnap backup complete"
+logecho "--- Tarsnap backup complete"
+
+logecho "--- Cleaning up after myself"
+
+rm -f /Users/ixmatus/mac_ports_installed.txt
+rm -f /Users/ixmatus/mac_dmgs_installed.txt
 
 # Append the log for this backup to the main log file
 cat $DAILYLOG >> $LOGFILE
