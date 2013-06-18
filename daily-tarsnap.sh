@@ -47,7 +47,6 @@ logecho "--- Executing tarsnap backup"
 --exclude .python-eggs \
 --exclude .saves \
 --exclude .pythonz \
---exclude .
 --exclude Temp \
 --exclude tmp \
 --exclude Cloud \
