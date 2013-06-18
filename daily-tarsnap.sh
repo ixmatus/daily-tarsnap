@@ -35,12 +35,13 @@ system_backup-`date +\%Y-%m-%d` \
 /Users/ixmatus/mac_dmgs_installed.txt \
 /Users/ixmatus/mac_ports_installed.txt \
 /Users/ixmatus/.* \
---exclude .vagrant.d \
---exclude .emacs \
---exclude .emacs.d \
+--exclude ~/.vagrant.d \
+--exclude ~/.emacs \
+--exclude ~/.emacs.d \
 --exclude *dialyzer_plt \
---exclude .emacs.elc \
---exclude .fabricrc \
+--exclude ~/.emacs.elc \
+--exclude ~/.fabricrc \
+--exclude ~/Temp \
 >> ${DAILYLOG} 2>&1
 
 logecho "--- Tarsnap backup complete"
