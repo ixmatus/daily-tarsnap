@@ -34,8 +34,10 @@ logecho "--- Executing tarsnap backup"
 --exclude .vagrant.d \
 --exclude .emacs \
 --exclude .emacs.d \
+--exclude .virtualenvs \
 --exclude *dialyzer_plt \
 --exclude .fabricrc \
+--exclude .Trash \
 --exclude Temp \
 --exclude tmp \
 --exclude Cloud \
