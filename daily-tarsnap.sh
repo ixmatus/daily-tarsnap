@@ -24,24 +24,41 @@ ls -al /Applications > /Users/ixmatus/mac_dmgs_installed.txt
 
 logecho "--- Executing tarsnap backup"
 
-# Only backing up my home dir as everything else *should* be
-# configurable from what's in my homedir only
-/usr/local/bin/tarsnap -vcf \
-system_backup-`date +\%Y-%m-%d` \
-/Users/ixmatus/Certs \
-/Users/ixmatus/Cloud \
-/Users/ixmatus/Documents \
-/Users/ixmatus/Desktop \
-/Users/ixmatus/mac_dmgs_installed.txt \
-/Users/ixmatus/mac_ports_installed.txt \
-/Users/ixmatus/.* \
---exclude ~/.vagrant.d \
---exclude ~/.emacs \
---exclude ~/.emacs.d \
+# Only backing up text and configuration files in home dir. Large
+# media (images, music, video) should be on external hdds!
+# 
+# Some images/video will be picked up but the major sources of them
+# should be excluded.
+/usr/local/bin/tarsnap \
+--exclude "VirtualBox VMs" \
+--exclude .vagrant.d \
+--exclude .emacs \
+--exclude .emacs.d \
 --exclude *dialyzer_plt \
---exclude ~/.emacs.elc \
---exclude ~/.fabricrc \
---exclude ~/Temp \
+--exclude .fabricrc \
+--exclude Temp \
+--exclude tmp \
+--exclude Cloud \
+--exclude Programming \
+--exclude Downloads \
+--exclude Music \
+--exclude Movies \
+--exclude Pictures \
+--exclude Sites \
+--exclude Public \
+--exclude node_modules \
+--exclude ~/Library \
+-vcf home_backup-`date +\%Y-%m-%d` \
+/Users/ixmatus/ \
+>> ${DAILYLOG} 2>&1
+
+logecho "--- Backing up library"
+
+/usr/local/bin/tarsnap \
+--exclude "/Users/ixmatus/Library/Application Support/Bitcoin/blocks" \
+--exclude "/Users/ixmatus/Library/Application Support/Skype/EmoticonCache.bundle" \
+-vcf library_backup-`date +\%Y-%m-%d` \
+"/Users/ixmatus/Library/Application Support/"
 >> ${DAILYLOG} 2>&1
 
 logecho "--- Tarsnap backup complete"
