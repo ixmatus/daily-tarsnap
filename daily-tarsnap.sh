@@ -26,7 +26,7 @@ logecho "--- Executing tarsnap backup"
 
 # Only backing up my home dir as everything else *should* be
 # configurable from what's in my homedir only
-/usr/local/bin/tarsnap -c -f \
+/usr/local/bin/tarsnap -vcf \
 system_backup-`date +\%Y-%m-%d` \
 /Users/ixmatus/Certs \
 /Users/ixmatus/Cloud \
@@ -35,7 +35,12 @@ system_backup-`date +\%Y-%m-%d` \
 /Users/ixmatus/mac_dmgs_installed.txt \
 /Users/ixmatus/mac_ports_installed.txt \
 /Users/ixmatus/.* \
---exclude .vagrant.d .emacs .emacs.d *dialyzer_plt .emacs.elc .fabricrc \
+--exclude .vagrant.d \
+--exclude .emacs \
+--exclude .emacs.d \
+--exclude *dialyzer_plt \
+--exclude .emacs.elc \
+--exclude .fabricrc \
 >> ${DAILYLOG} 2>&1
 
 logecho "--- Tarsnap backup complete"
