@@ -37,6 +37,17 @@ logecho "--- Executing tarsnap backup"
 --exclude .virtualenvs \
 --exclude *dialyzer_plt \
 --exclude .fabricrc \
+--exclude .bower \
+--exclude .android \
+--exclude .dropbox \
+--exclude .gem \
+--exclude .ghc \
+--exclude .npm \
+--exclude .pylint.d \
+--exclude .python-eggs \
+--exclude .saves \
+--exclude .pythonz \
+--exclude .
 --exclude Temp \
 --exclude tmp \
 --exclude Cloud \
@@ -57,6 +68,7 @@ logecho "--- Backing up library"
 
 /usr/local/bin/tarsnap \
 --exclude "/Users/ixmatus/Library/Application Support/Bitcoin/blocks" \
+--exclude "/Users/ixmatus/Library/Application Support/Bitcoin/blk*.dat" \
 --exclude "/Users/ixmatus/Library/Application Support/Skype/EmoticonCache.bundle" \
 -vcf library_backup-`date +\%Y-%m-%d` \
 "/Users/ixmatus/Library/Application Support/"
