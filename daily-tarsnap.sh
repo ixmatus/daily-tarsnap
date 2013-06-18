@@ -37,7 +37,6 @@ logecho "--- Executing tarsnap backup"
 --exclude .virtualenvs \
 --exclude *dialyzer_plt \
 --exclude .fabricrc \
---exclude .Trash \
 --exclude Temp \
 --exclude tmp \
 --exclude Cloud \
