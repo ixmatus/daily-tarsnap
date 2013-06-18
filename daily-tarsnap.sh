@@ -70,7 +70,7 @@ logecho "--- Backing up library"
 --exclude "/Users/ixmatus/Library/Application Support/Bitcoin/blk*.dat" \
 --exclude "/Users/ixmatus/Library/Application Support/Skype/EmoticonCache.bundle" \
 -vcf library_backup-`date +\%Y-%m-%d` \
-"/Users/ixmatus/Library/Application Support/"
+"/Users/ixmatus/Library/Application Support/" \
 >> ${DAILYLOG} 2>&1
 
 logecho "--- Tarsnap backup complete"
